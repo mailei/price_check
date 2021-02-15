@@ -50,9 +50,9 @@ if __name__ == '__main__':
   while True:
     try:
       # １時間おきにチェック
-      if datetime.now().strftime('%M')[0:2] != 00:
+      if datetime.now().strftime('%M')[0:2] == 00:
         price = scraping(target_page)
-        if not is_low_price(price, threshold_price):
+        if is_low_price(price, threshold_price):
           send_message("値下がりしたよ！現在　{0}円だよ!".format(price))
     except Exception as e:
       send_message("エラーだよ！ {0}".format(e))
